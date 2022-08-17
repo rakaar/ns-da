@@ -32,7 +32,7 @@ for a=1:length(animal_names)
     animal_data_struct.name = animal_names{1};
     animal_data_struct.channels = struct;
 
-    stimulus_path = strcat(sorted_data_path, '\', animal_names{1}, '\', 'stimcodes');
+    stimulus_path = strcat(sorted_data_path, '\', animal_names{a}, '\', 'stimcodes');
     stimulus_path_info = dir(stimulus_path);
     for s=3:length(stimulus_path_info)
         stimulus_file = strcat(stimulus_path, '\', stimulus_path_info(s).name);
@@ -97,3 +97,5 @@ for a=1:length(animal_names)
 
     all_animals_database.(strcat('animal', num2str(a))) = animal_data_struct;
 end
+
+%% make stimulus wise database

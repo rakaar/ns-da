@@ -8,7 +8,7 @@ function stimulus_wave = get_stimulus_wave(stimulus_type, all_stimulus_code,all_
         stimulus_wave = [stimulus_wave, stimulus_part];
     end
     
-    total_aquisition_time = 5000;
+    total_aquisition_time = 2500;
     post_stimulus_silence_duration = total_aquisition_time - length(stimulus_wave);
     post_stimulus_silence = zeros(1, post_stimulus_silence_duration);
 
