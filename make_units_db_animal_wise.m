@@ -29,6 +29,7 @@ for a=1:length(animal_names)
         
         recording_file = strrep(stimulus_file, '_stimcode', '_unit_record');
         recording_file = strrep(recording_file, '\stimcodes\', '\');
+        
         unit_record_spike = load(recording_file).unit_record_spike;
 
         for u=1:length(unit_record_spike)
@@ -46,7 +47,7 @@ for a=1:length(animal_names)
                 negative_spike_timings = channel_wise_spike_time.(iter_field_str);
                 spikes_from_timings = get_spikes_from_timings(total_stimulus_duration, negative_spike_timings);
                 response_db_per_animal{n_units, stimulus_played} = [response_db_per_animal{n_units, stimulus_played}; spikes_from_timings];
-                all_animals_response_cell_arr{n_units, stimulus_played} = [all_animals_response_cell_arr{n_units, stimulus_played}; spikes_from_timings];
+                all_animals_response_cell_arr{all_animals_units_counter, stimulus_played} = [all_animals_response_cell_arr{all_animals_units_counter, stimulus_played}; spikes_from_timings];
             end
             all_animals_units_counter = all_animals_units_counter + 1;
             n_units = n_units + 1;
