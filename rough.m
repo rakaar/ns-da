@@ -10,3 +10,11 @@ for jj=1:80
     psttrial(jj,allspktms{jj}(find(allspktms{jj}<=2000)))=1;
 end
 
+for kk=1:4
+subplot(2,2,kk),plot(squeeze(mean(squeeze(respall(:,kk+3:4:12,:))))')
+hold on
+for jj=1:3
+plot([50+(jj-1)*gap(kk)+5*(jj-1) 50+(jj-1)*gap(kk)+5*(jj-1)],[0 .03],'r')
+plot([55+(jj-1)*gap(kk)+5*(jj-1) 55+(jj-1)*gap(kk)+5*(jj-1)],[0 .03],'g')
+end
+end
