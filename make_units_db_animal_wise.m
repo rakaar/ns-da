@@ -33,7 +33,7 @@ for a=1:length(animal_names)
         unit_record_spike = load(recording_file).unit_record_spike;
 
         for u=1:length(unit_record_spike)
-            if isempty(unit_record_spike(u).negspikemat)
+            if isempty(unit_record_spike(u).negspiketime)
                 continue
             end
 
