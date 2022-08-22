@@ -16,7 +16,13 @@ all_animals_response_cell_arr = cell(500,16);
 all_animals_units_counter = 1;
 
 for a=1:length(animal_names)
+%     disp('animal name')
+%     disp(animal_names{a})
+
     stimulus_path = strcat(sorted_data_path, '\', animal_names{a}, '\', 'stimcodes');
+%     disp('stimulus_path')
+%     disp(stimulus_path)
+
     stimulus_path_info = dir(stimulus_path);
     n_units = 1;
     response_db_per_animal = cell(200,16);
@@ -24,14 +30,20 @@ for a=1:length(animal_names)
 
     for s=3:length(stimulus_path_info)
         stimulus_file = strcat(stimulus_path, '\', stimulus_path_info(s).name);
+%         disp('stimulus_file')
+%         disp(stimulus_file)
+
         stimulus_matrix = load(stimulus_file).codes; % 16 x 5 matrix
         reshaped_stimulus_matrix = reshape(stimulus_matrix, 1, numel(stimulus_matrix));
         
         recording_file = strrep(stimulus_file, '_stimcode', '_unit_record');
         recording_file = strrep(recording_file, '\stimcodes\', '\');
-        
+%         disp('recording_file')
+%         disp(recording_file)
         unit_record_spike = load(recording_file).unit_record_spike;
 
+%         disp('-------------------------------------')
+%         pause(3)
         for u=1:length(unit_record_spike)
             if isempty(unit_record_spike(u).negspiketime)
                 continue
@@ -43,6 +55,22 @@ for a=1:length(animal_names)
             % for each stimulus
             for iter=1:total_iters
                 stimulus_played = reshaped_stimulus_matrix(1,iter);
+%                 disp('stim way 1')
+%                 disp(stimulus_played)
+% 
+%                 disp('stimulus way 2')
+%                 if mod(iter,16) == 0
+%                     ccc = floor(iter/16);
+%                 else
+%                     ccc = floor(iter/16) + 1;
+%                 end
+% 
+%                 rrr = mod(iter,16);
+%                 if rrr == 0
+%                     rrr = 16;   
+%                 end
+%                 disp(stimulus_matrix(rrr,ccc))
+               
                 iter_field_str = strcat('iter',num2str(iter));
                 negative_spike_timings = channel_wise_spike_time.(iter_field_str);
                 spikes_from_timings = get_spikes_from_timings(total_stimulus_duration, negative_spike_timings);

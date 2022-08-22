@@ -1,3 +1,4 @@
+%% sample db creation example
 for kk=1:16
     idx=find(snm==kk);
     alldata{2,kk}=psttrial(idx,:);
@@ -10,6 +11,8 @@ for jj=1:80
     psttrial(jj,allspktms{jj}(find(allspktms{jj}<=2000)))=1;
 end
 
+%%  analysis code
+gap = [6 9 15 28];
 for jj=1:305
     for kk=1:16
         nrep=size(all_animals_response_cell_arr{jj,kk},1);
@@ -20,7 +23,7 @@ for jj=1:305
 end
 
 for kk=1:4
-    subplot(2,2,kk),plot(squeeze(mean(squeeze(respall(:,kk+3:4:12,:))))')
+    subplot(2,2,kk),plot(squeeze(mean(squeeze(respall(:,kk+4:4:12,:))))')
     hold on
     for jj=1:3
         plot([50+(jj-1)*gap(kk)+5*(jj-1) 50+(jj-1)*gap(kk)+5*(jj-1)],[0 .03],'r')
