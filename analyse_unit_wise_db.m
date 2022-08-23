@@ -4,6 +4,7 @@ stimulus_sets = 16;
 num_of_units = 299;
 bin_size = 5;
 total_stimulus_duration = 2500;
+response_binned_cell = cell(stimulus_sets,1);
 
 for s=1:stimulus_sets
     response_for_each_stimulus = [];
@@ -19,6 +20,7 @@ for s=1:stimulus_sets
     stimulus_reshaped = reshape(stimulus, bin_size, total_stimulus_duration/bin_size);
     stimulus_binned = mean(stimulus_reshaped, 1);
  
+    response_binned_cell{s,1} = binned_response_for_each_stimulus;
     figure
         hold on
             plot(binned_response_for_each_stimulus)
