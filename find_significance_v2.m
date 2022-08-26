@@ -3,7 +3,7 @@ n_units = 299;
 n_stimulus = 16;
 baseline_cell = cell(n_units, 5); % 1 for stim window, 4 for gap
 
-spont_start = 100;
+spont_start = 200;
 spont_stim_end = spont_start + 50;
 spont_gap1_end = spont_start + 60;
 spont_gap2_end = spont_start + 90;

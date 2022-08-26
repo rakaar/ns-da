@@ -6,10 +6,11 @@ bin_size = 5;
 total_stimulus_duration = 2500;
 response_binned_cell = cell(stimulus_sets,1);
 
+cell_to_be_analysed = all_animals_only_sig_responses_cell_arr;
 for s=1:stimulus_sets
     response_for_each_stimulus = [];
     for u=1:num_of_units
-        response_for_each_stimulus = [response_for_each_stimulus; all_animals_response_cell_arr{u,s}]; 
+        response_for_each_stimulus = [response_for_each_stimulus; cell_to_be_analysed{u,s}]; 
     end
 
     mean_response_for_each_stimulus = mean(response_for_each_stimulus, 1);
@@ -40,7 +41,7 @@ all_response_matrix = zeros(stimulus_sets, total_stimulus_duration/bin_size);
 for s=1:stimulus_sets
     response_for_each_stimulus = [];
     for u=1:num_of_units
-        response_for_each_stimulus = [response_for_each_stimulus; all_animals_response_cell_arr{u,s}]; 
+        response_for_each_stimulus = [response_for_each_stimulus; cell_to_be_analysed{u,s}]; 
     end
 
     mean_response_for_each_stimulus = mean(response_for_each_stimulus, 1);
@@ -74,7 +75,7 @@ close all;
 stimulus_sets = 16;
 
 animal_number = 2;
-num_of_units = 87;
+num_of_units = 299;
 animal_field_str = strcat('animal',num2str(animal_number));
 
 animal_response = all_animals_db.(animal_field_str);
