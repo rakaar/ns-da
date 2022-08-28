@@ -24,6 +24,7 @@ for f=3:length(stimulus_path_dir)
             continue
         end
 
+        
         cluster1_response_timings = response_negspiketime.cl1;
         for iter=1:total_iters
             stimulus_played = stimulus_matrix_reshaped(1,iter);

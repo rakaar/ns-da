@@ -1,12 +1,14 @@
 %% unit wise db psth
 close all;
 stimulus_sets = 16; 
-num_of_units = 299;
+
 bin_size = 5;
 total_stimulus_duration = 2500;
 response_binned_cell = cell(stimulus_sets,1);
 
-cell_to_be_analysed = all_animals_only_sig_responses_cell_arr;
+cell_to_be_analysed = only_sig_units_db;
+num_of_units = 184;
+
 for s=1:stimulus_sets
     response_for_each_stimulus = [];
     for u=1:num_of_units
@@ -32,10 +34,6 @@ for s=1:stimulus_sets
 end
 %%  same gap in one plot
 close all;
-stimulus_sets = 16; 
-num_of_units = 299;
-bin_size = 5;
-total_stimulus_duration = 2500;
 all_response_matrix = zeros(stimulus_sets, total_stimulus_duration/bin_size);
 
 for s=1:stimulus_sets
